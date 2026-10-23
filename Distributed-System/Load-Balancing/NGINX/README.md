@@ -17,10 +17,10 @@ Hal pertama yang perlu dilakukan ialah menyiapkan lingkungan server yang akan di
 
   - Semisal pada saat rose instalasi mengalai corrupt atau error di tengah proses instalasi, maka lakukan pembacaan errornya terlebih dahulu sebelum menindak lanjuti proses istalasi kembali. Dalan kasus ini ialah adanya bentrok anatara layanan open vSwitch milik mininet yang merupakan bekas pada praktikum sebelumnya, sehingga perlu dibersihkan dan dihapus sebeb tidak digunakan lagi.
 
-  <img width="937" height="237" alt="image" src="https://github.com/user-attachments/assets/ed06a02f-97c9-4ddc-8098-c2bd22e89d2d" />
+    <img width="937" height="237" alt="image" src="https://github.com/user-attachments/assets/ed06a02f-97c9-4ddc-8098-c2bd22e89d2d" />
 
 
-  <img width="720" height="25" alt="image" src="https://github.com/user-attachments/assets/1fb01961-68dc-4c90-a336-db5f0a74bf45" />
+    <img width="720" height="25" alt="image" src="https://github.com/user-attachments/assets/1fb01961-68dc-4c90-a336-db5f0a74bf45" />
 
   - Setelah mengatasi errornya, dilanjutkan untuk melakukan instalasi yang sebelunya itu corrup, cukup menjalankan perintah berikut:
 
