@@ -10,9 +10,25 @@ All modules and services are hosted and tested on a **Proxmox VE Cluster** with 
 
 ```mermaid
 graph TD
-    Client[Client / External Access] -->|Port 80/443| Gateway[CT 1: Reverse Proxy / Load Balancer]
-    Gateway -->|Private Network| AppVM[VM 1: Ubuntu Server Workloads]
-    Gateway -->|Private Network| MgmtCT[CT 2: Automation & Centralized Services]
+    %% Root Utama (Pemahaman / Home-Lab Seseorang)
+    Root[Home-Lab: 1 Semester Engineering Journey] --> Cabang1[01. Infrastruktur & Jaringan]
+    Root --> Cabang2[02. Sistem Terdistribusi]
+    Root --> Cabang3[03. Monitoring, Logging & SIEM]
+
+    %% Cabang 1: Infrastruktur & Jaringan
+    Cabang1 --> M1_1[Proxmox VE & Bridge Setup]
+    Cabang1 --> M1_2[SSH Hardening & Key Management]
+    Cabang1 --> M1_3[NetBox IPAM & Asset Tracking]
+
+    %% Cabang 2: Sistem Terdistribusi
+    Cabang2 --> M2_1[Nginx & HAProxy Load Balancing]
+    Cabang2 --> M2_2[Database Clustering & Replication]
+    Cabang2 --> M2_3[gRPC & Socket Programming]
+
+    %% Cabang 3: Monitoring & Security
+    Cabang3 --> M3_1[Prometheus & Grafana Stack]
+    Cabang3 --> M3_2[Graylog Centralized Syslog]
+    Cabang3 --> M3_3[Wazuh SIEM & Security Monitoring]
 ```
 Node Specifications
 VM 1 (Ubuntu Server): Containerized Workloads (Docker & Compose), Databases, & Microservices.
