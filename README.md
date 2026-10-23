@@ -53,5 +53,3 @@ Monitoring, Logging, & Security
 2. Graylog-Syslog-Pipeline — Centralized logging using Rsyslog and Graylog.
 3. Wazuh-SIEM-Security — Security monitoring, log analysis, and threat detection.
 
-Author
-Afdal Rizaldy — Computer and Network Engineering Student
