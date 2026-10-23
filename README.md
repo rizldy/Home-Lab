@@ -13,36 +13,3 @@ graph TD
     Client[Client / External Access] -->|Port 80/443| Gateway[CT 1: Reverse Proxy / Load Balancer]
     Gateway -->|Private Network| AppVM[VM 1: Ubuntu Server Workloads]
     Gateway -->|Private Network| MgmtCT[CT 2: Automation & Centralized Services]
-
-Node Specifications
-VM 1 (Ubuntu Server): Containerized Workloads (Docker & Compose), Databases, & Microservices.
-
-CT 1 (LXC Container): Gateway, Nginx Reverse Proxy, & HAProxy Load Balancer.
-
-CT 2 (LXC Container): Automation Node, Monitoring Agents, & Centralized Logging.
-
-Distributed Systems
-[ ] 01-Load-Balancing-Nginx-HAProxy — Traffic distribution and high availability failover.
-
-[ ] 02-Database-Clustering — Database replication and master-slave setup.
-
-[ ] 03-Socket-gRPC-Services — Inter-service communication using gRPC and socket programming.
-
-📊 Monitoring, Loggin
-
-Network & Infrastructure Management
-[ ] 01-Proxmox-Setup-Network — Proxmox VE installation, bridge setup, and IP routing.
-
-[ ] 02-SSH-Access-Hardening — SSH key authentication, config shortcuts, and security hardening.
-
-[ ] 03-NetBox-IPAM — Infrastructure IP address management and asset tracking.
-
-Monitoring, Logging, & Security
-[ ] 01-Prometheus-Grafana-Stack — Infrastructure metrics collection and custom dashboards.
-
-[ ] 02-Graylog-Syslog-Pipeline — Centralized logging using Rsyslog and Graylog.
-
-[ ] 03-Wazuh-SIEM-Security — Security monitoring, log analysis, and threat detection.
-
-Author
-Afdal Rizaldy — Computer and Network Engineering Student
