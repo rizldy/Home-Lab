@@ -87,6 +87,93 @@ Layanan yang sedang berjalan ialah apache2 sehingga port 80 telah terisi. Terdap
 - Melakukan start kembali ke layanan NGINX
     <img width="910" height="283" alt="image" src="https://github.com/user-attachments/assets/8d3ad2e2-6c1c-4144-881e-3c96073930b1" />
 
+- Melanjutkan konfigurasi proxy sebagai fitur load balancer pada server dengan mengakser direktori /etc/nginx/sites-available/ untuk melakukan konfigurasi pada sebuah file config bernama default yang telah disiapkan oleh NGINX ketika terinstal
+
+  <img width="573" height="52" alt="image" src="https://github.com/user-attachments/assets/d26afaf2-1f9b-4d97-9f9c-ffc04c659d58" />
+
+Setelah berhasil masuk ke direktori, lanjutkan dengan menuliskan beberapa perntah ke dalam file default dengan perintah nano.
+
+  ```
+  sudo nano default
+  ```
+Tambagkan beberapa perintah diantaranya menambahakn variable upstream backend sebagai media proxy load balencer yang akan mengarahkan ke 2 node server. Masukkan indikator berikut ke dalam file default tepat diluar variabel server{}:
+
+  <img width="570" height="292" alt="image" src="https://github.com/user-attachments/assets/27c55938-f829-42fe-8cf6-5705930e13cd" />
+
+
+  ```
+  upstream backend {
+        server 10.2.23.46;
+        server 10.2.23.48;
+}
+  ```
+Catatan: ip addres diatas disesuaikan dengan ip address milik node - node server yang menjadi backend server.
+
+Kemudiian tambahkan value  proxy_pass http:backend didalam variabel location di dalam file default sebagai pintu akses yang akan mengarahkan ke tiap node yang telah didaftarkan di variabel upstream backend
+
+  <img width="815" height="200" alt="image" src="https://github.com/user-attachments/assets/c7c11215-a10c-4735-8243-6008c1d260c4" />
+
+
+
+  ```
+   proxy_pass http://backend;
+  ```
+
+- Melakukan restart layanan NGINX agar melakukan load resorce yang barusan telah ditambahakan di dile default melalui direktori /etc/nginx/sites-available
+
+```
+sudo systemctl restart nginx.service
+```
+ Apabila pada saat proses restart gagal, maka dapat dipastikan dalam file default tertadapat typo ataupun kesalana dalam penulisan, sehingga dapat membatalkan proses restart. Oleh krena itu perlu diperhatikan dengan teliti ketika menuliskan konfogurasi dalam file.
+
+- Melakukan instalasi layanan NGINX ke 2 node server backend
+
+  <img width="610" height="112" alt="image" src="https://github.com/user-attachments/assets/32d80e07-f546-4e75-aeb9-27d3cca27adb" />
+
+
+  <img width="533" height="92" alt="image" src="https://github.com/user-attachments/assets/4b232e24-1049-4031-8a97-38bb71942226" />
+
+- Menganses direktori /var/www/html/ untuk mengaudit file html agar membedakan anatara sisi node 1 dan node 2 server backend ketika load balencer berjalan. Proses ini sebagai media bantu untuk validasi dalam proses load balencer mengguanakn 2 node server.
+
+  <img width="420" height="43" alt="image" src="https://github.com/user-attachments/assets/4a23981d-ef34-46ce-8448-62e85cc6d1e7" />
+
+  <img width="946" height="592" alt="image" src="https://github.com/user-attachments/assets/c7bb8846-1dc6-4a60-bd3e-1099512a1135" />
+
+
+
+
+  <img width="527" height="47" alt="image" src="https://github.com/user-attachments/assets/ebadd1ba-4dd3-45cf-a5ff-21e91bddfba2" />
+
+  <img width="929" height="595" alt="image" src="https://github.com/user-attachments/assets/c1aad098-04dc-4a24-85eb-07482d64303b" />
+
+
+  ```
+  sudo nano index.nginx-debian.html
+  ```
+
+- Melakukan percobaan dengan melakukan akses via web browser milik pihak client, dalam hal ini adalah sebuah unit laptop os windows.
+
+<img width="1600" height="600" alt="image" src="https://github.com/user-attachments/assets/2fdb7f7c-ea11-480c-8d27-dd9c3cb2323e" />
+
+<img width="1616" height="607" alt="image" src="https://github.com/user-attachments/assets/a3a47bf8-40ae-4734-8847-5f6ac81cbe85" />
+
+Proses laod balancing berhasil dilakukan, terlihat setiap ada client yang mengakses, maka traffic akan di bebankan secara bergantian ke kedua node, sehingga pembagian beban kerja yang selaras dengan konsep load balancing itu terpenuhi.
+
+Perlu diperhatikan bahwa proses akses - mengakses antara server dan client hanya dapat dialakuakn ketika kedua unit ini berada dalam satu segment jaringan yang sama. Pada kasus kali ini menggunakan server yang direct langsung ke router milik kampus yang meneyediakan gateway ke internet, maka client pun perlu berada dan menggunakan jaringan yang sama. Adapun alternatif lain yaitu menggunakan VPN seagai media penguhubung.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
